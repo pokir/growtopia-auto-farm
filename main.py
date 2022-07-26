@@ -18,6 +18,8 @@ keys = {
 
 
 def get_windows():
+    # Return all visible windows
+
     windows = []
 
     def win_enum_handler(hwnd, ctx):
@@ -30,10 +32,14 @@ def get_windows():
 
 
 def get_window_name(hwnd):
+    # Get the name of a window object
+
     return win32gui.GetWindowText(hwnd)
 
 
 def press_key_in_window(hwnd, key, seconds):
+    # Press a key in a window
+
     win32api.SendMessage(hwnd, win32con.WM_KEYDOWN, key, 0)
     sleep(seconds)
     win32api.SendMessage(hwnd, win32con.WM_KEYUP, key, 0)
@@ -42,11 +48,12 @@ def press_key_in_window(hwnd, key, seconds):
 def main():
     windows = get_windows()
 
-    # Get all windows named something containing 'Growtopia'
+    # Get all windows named something containing 'growtopia'
     game_windows = list(filter(
         lambda window: 'growtopia' in get_window_name(window).lower(), windows
     ))
 
+    # Walk to the right in every Growtopia game window
     for game_window in game_windows:
         press_key_in_window(game_window, keys['d'], 10)
 
