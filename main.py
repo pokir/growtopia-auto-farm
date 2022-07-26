@@ -55,7 +55,7 @@ def main():
         for game_window in game_windows:
             win32gui.SetForegroundWindow(game_window)
 
-            press_key_in_window(game_window, keys['w'], 0.3)
+            press_key_in_window(game_window, keys['d'], 0.3)
 
             sleep(0.5)
 
