@@ -47,17 +47,10 @@ def main():
         lambda window: 'growtopia' in get_window_name(window).lower(), windows
     ))
 
-    #win = win32ui.CreateWindowFromHandle(hwnd)
+    for game_window in game_windows:
+        press_key_in_window(game_window, keys['d'], 10)
 
-    # Loop through focusing each growtopia window 20 times
-    # TODO: it focuses one window and then fails on every other iteration
-    for _ in range(3):
-        for game_window in game_windows:
-            #win32gui.SetForegroundWindow(game_window)
-
-            press_key_in_window(game_window, keys['d'], 10)
-
-            sleep(0.5)
+        sleep(0.5)
 
 
 if __name__ == '__main__':
