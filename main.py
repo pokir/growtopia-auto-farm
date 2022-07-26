@@ -70,7 +70,6 @@ async def do_farming(hwnd):
         await punch_task
 
 
-
 async def main():
     windows = get_windows()
 
