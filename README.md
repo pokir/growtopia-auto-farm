@@ -1,3 +1,12 @@
+# growtopia-auto-farm
+
+Farm in Growtopia automatically.
+
+## Requirements
+
+- Python 3 (tested on python 3.10.5)
+- Windows
+
 ## Setup
 
 ### Install the dependencies
