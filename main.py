@@ -1,5 +1,16 @@
 from time import sleep
 import win32gui
+import win32ui
+
+try:
+    import win32api
+except:
+    print('No win32api :(')
+
+try:
+    import win32con
+except:
+    print('No win32api :(')
 
 
 def list_window_names():
@@ -10,5 +21,17 @@ def list_window_names():
     win32gui.EnumWindows(win_enum_handler, None)
 
 
-if __name__ == '__main__':
+def main():
     list_window_names()
+    
+    window_name = 'Growtopia'
+
+    hwnd = win32gui.FindWindow(None, window_name)
+    win = win32ui.CreateWindowFromHandle(hwnd
+
+    # focus the game window
+    win32gui.SetForegroundWindow(hwnd)
+
+
+if __name__ == '__main__':
+    main()
