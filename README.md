@@ -37,10 +37,10 @@ It is your job to configure the walking and punching times.
 
 Create a `.env` file and add the following values (see `example.env` for examples):
 
-| Variable | Type | Description |
-| :-: | :-: | :-: |
-| **WALK\_SECONDS\_PER\_BLOCK** | float | The number of seconds it takes to walk from one block to the next. |
-| **PUNCH\_SECONDS\_PER\_BLOCK** | float | The number of seconds it takes to punch (destroy) a block. |
+| VARIABLE | TYPE | REQUIRED | DESCRIPTION |
+| :-: | :-: | :-: | :-: |
+| **WALK\_SECONDS\_PER\_BLOCK** | float | ✓ | The number of seconds it takes to walk from one block to the next. |
+| **PUNCH\_SECONDS\_PER\_BLOCK** | float | ✓ | The number of seconds it takes to punch (destroy) a block. |
 
 ## Run
 
