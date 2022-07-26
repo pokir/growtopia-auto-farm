@@ -4,7 +4,7 @@ Optionally setup a virtual environment to avoid installing requirements globally
 
 ```sh
 python3 -m venv venv
-source venv/bin/activate
+venv\Scripts\activate.bat
 ```
 
 Install the requirements:
@@ -17,6 +17,5 @@ pip install win32gui
 ## Run
 
 ```
-source venv/bin/activate
-python3 main.py
+venv\Scripts\python.exe main.py
 ```
