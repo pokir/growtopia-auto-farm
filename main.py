@@ -68,7 +68,7 @@ async def do_farming(hwnd):
         )
 
         punch_task = asyncio.create_task(
-            press_key_in_window(hwnd, keys['d'], PUNCH_SECONDS_PER_BLOCK)
+            press_key_in_window(hwnd, keys['space'], PUNCH_SECONDS_PER_BLOCK)
         )
 
         # Wait for both the moving and punching to stop
