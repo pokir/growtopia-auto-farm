@@ -27,7 +27,7 @@ def main():
     window_name = 'Growtopia'
 
     hwnd = win32gui.FindWindow(None, window_name)
-    win = win32ui.CreateWindowFromHandle(hwnd
+    win = win32ui.CreateWindowFromHandle(hwnd)
 
     # focus the game window
     win32gui.SetForegroundWindow(hwnd)
