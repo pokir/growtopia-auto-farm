@@ -1,12 +1,19 @@
 # Code inspired by https://www.youtube.com/watch?v=J3fatZ2OVIU
 
-#from time import sleep
+from dotenv import load_dotenv
 import asyncio
 import win32api
 import win32con
 import win32gui
 import win32ui
 
+
+# Set environment variables from .env
+load_dotenv()
+
+# Constants
+WALK_SECONDS_PER_BLOCK = os.environ['WALK_SECONDS_PER_BLOCK']
+PUNCH_SECONDS_PER_BLOCK = os.environ['PUNCH_SECONDS_PER_BLOCK']
 
 # http://www.kbdedit.com/manual/low_level_vk_list.html
 keys = {
@@ -46,6 +53,24 @@ async def press_key_in_window(hwnd, key, seconds):
     win32api.SendMessage(hwnd, win32con.WM_KEYUP, key, 0)
 
 
+async def do_farming(hwnd):
+    while True:
+        move_right_task = asyncio.create_task(
+            press_key_in_window(game_window, keys['d'], WALK_SECONDS_PER_BLOCK)
+        )
+
+        punch_task = asyncio.create_task(
+            press_key_in_window(game_window, keys['d'], PUNCH_SECONDS_PER_BLOCK)
+        )
+
+        # Wait for both the moving and punching to stop
+        # (awaiting the punching isn't really necessary since it should move 
+        # for longer than it punches, but it is safer this way)
+        await move_right_task
+        await punch_task
+
+
+
 async def main():
     windows = get_windows()
 
@@ -54,9 +79,9 @@ async def main():
         lambda window: 'growtopia' in get_window_name(window).lower(), windows
     ))
 
-    # Walk to the right in every game window
+    # Start farming in every game window
     for game_window in game_windows:
-        asyncio.create_task(press_key_in_window(game_window, keys['d'], 10))
+        asyncio.create_task(do_farming(hwnd))
 
 
 if __name__ == '__main__':
