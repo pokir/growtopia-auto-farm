@@ -1,6 +1,7 @@
 # Code inspired by https://www.youtube.com/watch?v=J3fatZ2OVIU
 
-from time import sleep
+#from time import sleep
+import asyncio
 import win32api
 import win32con
 import win32gui
@@ -37,15 +38,15 @@ def get_window_name(hwnd):
     return win32gui.GetWindowText(hwnd)
 
 
-def press_key_in_window(hwnd, key, seconds):
+async def press_key_in_window(hwnd, key, seconds):
     # Press a key in a window
 
     win32api.SendMessage(hwnd, win32con.WM_KEYDOWN, key, 0)
-    sleep(seconds)
+    await asyncio.sleep(seconds)
     win32api.SendMessage(hwnd, win32con.WM_KEYUP, key, 0)
 
 
-def main():
+async def main():
     windows = get_windows()
 
     # Get all windows named something containing 'growtopia'
@@ -53,12 +54,10 @@ def main():
         lambda window: 'growtopia' in get_window_name(window).lower(), windows
     ))
 
-    # Walk to the right in every Growtopia game window
+    # Walk to the right in every game window
     for game_window in game_windows:
-        press_key_in_window(game_window, keys['d'], 10)
-
-        sleep(0.5)
+        asyncio.create_task(press_key_in_window(game_window, keys['d'], 10))
 
 
 if __name__ == '__main__':
-    main()
+    asyncio.run(main())
