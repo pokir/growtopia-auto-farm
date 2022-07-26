@@ -32,23 +32,15 @@ def get_window_name(hwnd):
 def main():
     windows = get_windows()
 
-    game_window_name = ''
+    # Get all windows named something containing 'Growtopia'
+    game_windows = list(filter(
+        lambda window: 'growtopia' in get_window_name(window).lower(), windows
+    ))
 
-    # Find a window name containing 'Growtopia'
-    for window in windows:
-        window_name = get_window_name(window)
-
-        if 'growtopia' in window_name.lower():
-            game_window_name = window_name
-
-    hwnd = win32gui.FindWindow(None, game_window_name)
     #win = win32ui.CreateWindowFromHandle(hwnd)
 
-    # Print the actual name of the window
-    print('The actual name of the window is:', repr(game_window_name))
-
     # Focus the game window
-    win32gui.SetForegroundWindow(hwnd)
+    win32gui.SetForegroundWindow(game_windows[0])
 
 
 if __name__ == '__main__':
