@@ -16,9 +16,10 @@ load_dotenv()
 try:
     WALK_SECONDS_PER_BLOCK = float(os.environ['WALK_SECONDS_PER_BLOCK'])
     PUNCH_SECONDS_PER_BLOCK = float(os.environ['PUNCH_SECONDS_PER_BLOCK'])
-except KeyError:
+except (KeyError, ValueError):
     print('It looks like you did not configure the .env file correctly. Please create the .env file and set all values (see README.md and example.env)')
     exit()
+
 
 # http://www.kbdedit.com/manual/low_level_vk_list.html
 keys = {
