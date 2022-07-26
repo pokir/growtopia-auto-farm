@@ -10,7 +10,7 @@ except:
 try:
     import win32con
 except:
-    print('No win32api :(')
+    print('No win32con :(')
 
 
 def list_window_names():
