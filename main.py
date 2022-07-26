@@ -2,11 +2,11 @@
 
 from dotenv import load_dotenv
 import asyncio
+import os
 import win32api
 import win32con
 import win32gui
 import win32ui
-import os
 
 
 # Set environment variables from .env
@@ -81,7 +81,7 @@ async def main():
 
     # Start farming in every game window
     for game_window in game_windows:
-        asyncio.create_task(do_farming(hwnd))
+        asyncio.create_task(do_farming(game_window))
 
 
 if __name__ == '__main__':
