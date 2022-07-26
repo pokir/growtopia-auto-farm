@@ -60,6 +60,8 @@ async def press_key_in_window(hwnd, key, seconds):
 
 
 async def do_farming(hwnd):
+    # Start farming in a game window forever
+
     while True:
         # Start both walking and punching at the same time, then wait for both
         # to stop (either the walking or punching could take longer)
