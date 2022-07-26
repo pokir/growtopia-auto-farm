@@ -55,6 +55,8 @@ async def press_key_in_window(hwnd, key, seconds):
 
 async def do_farming(hwnd):
     while True:
+        # Start both walking and punching at the same time, then wait for both
+        # to stop (either the walking or punching could take longer)
         move_right_task = asyncio.create_task(
             press_key_in_window(game_window, keys['d'], WALK_SECONDS_PER_BLOCK)
         )
@@ -64,8 +66,6 @@ async def do_farming(hwnd):
         )
 
         # Wait for both the moving and punching to stop
-        # (awaiting the punching isn't really necessary since it should move 
-        # for longer than it punches, but it is safer this way)
         await move_right_task
         await punch_task
 
