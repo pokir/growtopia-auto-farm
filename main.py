@@ -32,7 +32,7 @@ def main():
 
     # Loop through all window names to find one containing the word Growtopia
     for window_name in window_names:
-        if 'Growtopia' in window_name:
+        if 'growtopia' in window_name.lower():
             game_window_name = window_name
 
     hwnd = win32gui.FindWindow(None, game_window_name)
