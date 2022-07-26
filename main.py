@@ -1,16 +1,20 @@
+# Code inspired by https://www.youtube.com/watch?v=J3fatZ2OVIU
+
 from time import sleep
+import win32api
+import win32con
 import win32gui
 import win32ui
 
-try:
-    import win32api
-except:
-    print('No win32api :(')
 
-try:
-    import win32con
-except:
-    print('No win32con :(')
+# http://www.kbdedit.com/manual/low_level_vk_list.html
+keys = {
+    'w': 0x57,
+    'a': 0x41,
+    's': 0x53,
+    'd': 0x44,
+    'space': 0x20,
+}
 
 
 def get_windows():
@@ -29,6 +33,12 @@ def get_window_name(hwnd):
     return win32gui.GetWindowText(hwnd)
 
 
+def press_key_in_window(hwnd, key, seconds):
+    win32api.SendMessage(hwnd, win32con.WM_KEYDOWN, key, 0)
+    sleep(seconds)
+    win32api.SendMessage(hwnd, win32con.WM_KEYUP, key, 0)
+
+
 def main():
     windows = get_windows()
 
@@ -40,14 +50,14 @@ def main():
     #win = win32ui.CreateWindowFromHandle(hwnd)
 
     # Loop through focusing each growtopia window 20 times
-    for _ in range(20):
+    # TODO: it focuses one window and then fails on every other iteration
+    for _ in range(3):
         for game_window in game_windows:
-            sleep(0.05)
+            win32gui.SetForegroundWindow(game_window)
 
-            try:
-                win32gui.SetForegroundWindow(game_window)
-            except:
-                print(f'This window didn\'t work: {get_window_name(game_window)} {game_window}')
+            press_key_in_window(game_window, keys['w'], 0.3)
+
+            sleep(0.5)
 
 
 if __name__ == '__main__':
