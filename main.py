@@ -83,9 +83,17 @@ async def main():
         lambda window: 'growtopia' in get_window_name(window).lower(), windows
     ))
 
+    farming_tasks = []
+
     # Start farming in every game window
     for game_window in game_windows:
-        asyncio.create_task(do_farming(game_window))
+        task = asyncio.create_task(do_farming(game_window))
+
+        farming_tasks.append(task)
+
+    # Wait for every farming task to finish (which is never)
+    asyncio.gather(*farming_tasks)
+
 
 
 if __name__ == '__main__':
