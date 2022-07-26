@@ -1,6 +1,6 @@
 ## Setup
 
-### Install the requirements
+### Install the dependencies
 
 Optionally setup a virtual environment to avoid installing requirements globally:
 
@@ -9,7 +9,7 @@ python3 -m venv venv
 venv\Scripts\activate.bat
 ```
 
-Install the requirements:
+Then install the dependencies:
 
 ```sh
 pip install --upgrade pip
