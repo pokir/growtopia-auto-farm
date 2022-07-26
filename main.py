@@ -43,7 +43,11 @@ def main():
     for _ in range(20):
         for game_window in game_windows:
             sleep(0.05)
-            win32gui.SetForegroundWindow(game_window)
+
+            try:
+                win32gui.SetForegroundWindow(game_window)
+            except:
+                print(f'This window didn\'t work: {get_window_name(game_window)} {game_window}')
 
 
 if __name__ == '__main__':
