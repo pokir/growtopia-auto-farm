@@ -10,8 +10,8 @@ This is a know issue and is being worked on ([#4](/../../issues/4)).
 
 ## Requirements
 
-- Python 3 (tested on python 3.10.5)
-- Windows
+- Python 3 (tested on Python 3.10.5)
+- Windows (tested on Windows 11)
 
 ## Setup
 
