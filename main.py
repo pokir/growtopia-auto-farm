@@ -7,7 +7,7 @@ def list_window_names():
         if win32gui.IsWindowVisible(hwnd):
             print(hex(hwnd), '"' + win32gui.GetWindowText(hwnd) + '"')
 
-    win32gui.EnumWindows(, None)
+    win32gui.EnumWindows(win_enum_handler, None)
 
 
 if __name__ == '__main__':
