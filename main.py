@@ -13,8 +13,12 @@ import win32ui
 load_dotenv()
 
 # Constants
-WALK_SECONDS_PER_BLOCK = os.environ['WALK_SECONDS_PER_BLOCK']
-PUNCH_SECONDS_PER_BLOCK = os.environ['PUNCH_SECONDS_PER_BLOCK']
+try:
+    WALK_SECONDS_PER_BLOCK = os.environ['WALK_SECONDS_PER_BLOCK']
+    PUNCH_SECONDS_PER_BLOCK = os.environ['PUNCH_SECONDS_PER_BLOCK']
+except KeyError:
+    print('It looks like you did not configure this correctly. Please create the .env file and set all values (see README.md and example.env)')
+    exit()
 
 # http://www.kbdedit.com/manual/low_level_vk_list.html
 keys = {
@@ -59,11 +63,11 @@ async def do_farming(hwnd):
         # Start both walking and punching at the same time, then wait for both
         # to stop (either the walking or punching could take longer)
         move_right_task = asyncio.create_task(
-            press_key_in_window(game_window, keys['d'], WALK_SECONDS_PER_BLOCK)
+            press_key_in_window(hwnd, keys['d'], WALK_SECONDS_PER_BLOCK)
         )
 
         punch_task = asyncio.create_task(
-            press_key_in_window(game_window, keys['d'], PUNCH_SECONDS_PER_BLOCK)
+            press_key_in_window(hwnd, keys['d'], PUNCH_SECONDS_PER_BLOCK)
         )
 
         # Wait for both the moving and punching to stop
