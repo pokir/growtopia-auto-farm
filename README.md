@@ -2,6 +2,12 @@
 
 Farm in Growtopia automatically.
 
+This should work with multiple instances of Growtopia open.
+
+Note that it selects all windows containing "Growtopia" (case insensitive) in the title.\
+This can cause issues if you have windows containing "Growtopia" in the title, but aren't Growtopia.\
+This is a know issue and is being worked on (#4).
+
 ## Requirements
 
 - Python 3 (tested on python 3.10.5)
@@ -26,6 +32,8 @@ pip install -r requirements.txt
 ```
 
 ### Configure
+
+It is your job to configure the walking and punching times.
 
 Create a `.env` file and add the following values (see `example.env` for examples):
 
