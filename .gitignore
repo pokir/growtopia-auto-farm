@@ -1,7 +1,17 @@
+# MacOS
 .DS_Store
+
+# Vim or other text editors
 *.swp
 *.swo
+.vscode/
+
+# Python
 __pycache__/
 *.pyc
+
+# Virtual environment
 venv/
-.vscode/
+
+# Environment variables
+.env
