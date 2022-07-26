@@ -53,7 +53,7 @@ def main():
     # TODO: it focuses one window and then fails on every other iteration
     for _ in range(3):
         for game_window in game_windows:
-            win32gui.SetForegroundWindow(game_window)
+            #win32gui.SetForegroundWindow(game_window)
 
             press_key_in_window(game_window, keys['d'], 10)
 
