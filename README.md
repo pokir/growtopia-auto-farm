@@ -6,7 +6,7 @@ This should work with multiple instances of Growtopia open.
 
 Note that it selects all windows containing "Growtopia" (case insensitive) in the title.\
 This can cause issues if you have windows containing "Growtopia" in the title, but aren't Growtopia.\
-This is a know issue and is being worked on (#4).
+This is a know issue and is being worked on ([#4](/../../issues/4)).
 
 ## Requirements
 
