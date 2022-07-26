@@ -39,8 +39,11 @@ def main():
 
     #win = win32ui.CreateWindowFromHandle(hwnd)
 
-    # Focus the game window
-    win32gui.SetForegroundWindow(game_windows[0])
+    # Loop through focusing each growtopia window 20 times
+    for _ in range(20):
+        for game_window in game_windows:
+            sleep(0.05)
+            win32gui.SetForegroundWindow(game_window)
 
 
 if __name__ == '__main__':
