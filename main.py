@@ -20,7 +20,6 @@ except (KeyError, ValueError):
     print('It looks like you did not configure the .env file correctly. Please create the .env file and set all values (see README.md and example.env)')
     exit()
 
-
 # http://www.kbdedit.com/manual/low_level_vk_list.html
 keys = {
     'w': 0x57,
