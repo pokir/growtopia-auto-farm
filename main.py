@@ -14,8 +14,8 @@ load_dotenv()
 
 # Constants
 try:
-    WALK_SECONDS_PER_BLOCK = os.environ['WALK_SECONDS_PER_BLOCK']
-    PUNCH_SECONDS_PER_BLOCK = os.environ['PUNCH_SECONDS_PER_BLOCK']
+    WALK_SECONDS_PER_BLOCK = float(os.environ['WALK_SECONDS_PER_BLOCK'])
+    PUNCH_SECONDS_PER_BLOCK = float(os.environ['PUNCH_SECONDS_PER_BLOCK'])
 except KeyError:
     print('It looks like you did not configure this correctly. Please create the .env file and set all values (see README.md and example.env)')
     exit()
