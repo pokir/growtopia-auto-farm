@@ -13,30 +13,39 @@ except:
     print('No win32con :(')
 
 
-def get_window_names():
-    window_names = []
+def get_windows():
+    windows = []
 
     def win_enum_handler(hwnd, ctx):
         if win32gui.IsWindowVisible(hwnd):
-            window_names.append(win32gui.GetWindowText(hwnd))
+            windows.append(hwnd)
 
     win32gui.EnumWindows(win_enum_handler, None)
 
-    return window_names
+    return windows
+
+
+def get_window_name(hwnd):
+    return win32gui.GetWindowText(hwnd)
 
 
 def main():
-    window_names = get_window_names()
+    windows = get_windows()
 
     game_window_name = ''
 
-    # Loop through all window names to find one containing the word Growtopia
-    for window_name in window_names:
+    # Find a window name containing 'Growtopia'
+    for window in windows:
+        window_name = get_window_name(window)
+
         if 'growtopia' in window_name.lower():
             game_window_name = window_name
 
     hwnd = win32gui.FindWindow(None, game_window_name)
     #win = win32ui.CreateWindowFromHandle(hwnd)
+
+    # Print the actual name of the window
+    print('The actual name of the window is:', repr(game_window_name))
 
     # Focus the game window
     win32gui.SetForegroundWindow(hwnd)
