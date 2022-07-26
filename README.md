@@ -11,7 +11,7 @@ Install the requirements:
 
 ```sh
 pip install --upgrade pip
-pip install win32gui
+pip install pywin32
 ```
 
 ## Run
