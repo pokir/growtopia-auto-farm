@@ -92,7 +92,7 @@ async def main():
         farming_tasks.append(task)
 
     # Wait for every farming task to finish (which is never)
-    asyncio.gather(*farming_tasks)
+    await asyncio.gather(*farming_tasks)
 
 
 
