@@ -50,12 +50,12 @@ async def do_farming(hwnd):
         # Start both walking and punching at the same time, then wait for both
         # to stop (either the walking or punching could take longer)
         move_right_task = asyncio.create_task(
-            press_key_in_window(hwnd, KEYS['d'],
+            press_key_in_window(hwnd, KEYS[os.getenv('WALK_KEY')],
                                 os.getenv('WALK_SECONDS_PER_BLOCK'))
         )
 
         punch_task = asyncio.create_task(
-            press_key_in_window(hwnd, KEYS['space'],
+            press_key_in_window(hwnd, KEYS[os.getenv('PUNCH_KEY')],
                                 os.getenv('PUNCH_SECONDS_PER_BLOCK'))
         )
 
