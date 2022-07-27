@@ -72,8 +72,7 @@ async def do_farming(hwnd):
         )
 
         # Wait for both the moving and punching to stop
-        await move_right_task
-        await punch_task
+        await asyncio.gather(move_right_task, punch_task)
 
 
 async def main():
