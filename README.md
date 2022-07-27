@@ -33,7 +33,7 @@ pip install -r requirements.txt
 
 ### Configure
 
-It is your job to configure the walking and punching times.
+It is your job to configure the walking and punching times, and control keys.
 
 Create a `.env` file and add the following values (see `example.env` for examples):
 
