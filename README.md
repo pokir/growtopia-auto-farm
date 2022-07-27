@@ -41,8 +41,8 @@ Create a `.env` file and add the following values (see `example.env` for example
 | :-: | :-: | :-: |
 | **WALK\_SECONDS\_PER\_BLOCK** | ✓ | The number of seconds it takes to walk from one block to the next. |
 | **PUNCH\_SECONDS\_PER\_BLOCK** | ✓ | The number of seconds it takes to punch (destroy) a block. |
-| **WALK\_KEY** | ✓ | The key to press to walk. See `src/constants.py` for a list of valid keys. |
-| **PUNCH\_KEY** | ✓ | The key to press to punch a block. See `src/constants.py` for a list of valid keys. |
+| **WALK\_KEY** | ✓ | The key to press to walk. See [`src/constants.py`](src/constants.py) for a list of valid keys. |
+| **PUNCH\_KEY** | ✓ | The key to press to punch a block. See [`src/constants.py`](src/constants.py) for a list of valid keys. |
 
 ## Run
 
