@@ -1,8 +1,6 @@
 # growtopia-auto-farm
 
-Farm in Growtopia automatically.
-
-This should work with multiple instances of Growtopia open.
+Farm on multiple instances of Growtopia automatically.
 
 Note that it selects all windows containing "Growtopia" (case insensitive) in the title.\
 This can cause issues if you have windows containing "Growtopia" in the title, but aren't Growtopia.\
