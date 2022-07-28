@@ -7,26 +7,12 @@ import win32api
 import win32con
 import win32gui
 
+from check_env import check_environment_variables
+from constants import KEYS
 
-# Set environment variables from .env
+
+# Load environment variables from .env
 load_dotenv()
-
-# Constants
-try:
-    WALK_SECONDS_PER_BLOCK = float(os.environ['WALK_SECONDS_PER_BLOCK'])
-    PUNCH_SECONDS_PER_BLOCK = float(os.environ['PUNCH_SECONDS_PER_BLOCK'])
-except (KeyError, ValueError):
-    print('It looks like you did not configure the .env file correctly. Please create the .env file and set all values (see README.md and example.env)')
-    exit()
-
-# http://www.kbdedit.com/manual/low_level_vk_list.html
-keys = {
-    'w': 0x57,
-    'a': 0x41,
-    's': 0x53,
-    'd': 0x44,
-    'space': 0x20,
-}
 
 
 def get_windows():
@@ -64,11 +50,13 @@ async def do_farming(hwnd):
         # Start both walking and punching at the same time, then wait for both
         # to stop (either the walking or punching could take longer)
         move_right_task = asyncio.create_task(
-            press_key_in_window(hwnd, keys['d'], WALK_SECONDS_PER_BLOCK)
+            press_key_in_window(hwnd, KEYS[os.getenv('WALK_KEY')],
+                                os.getenv('WALK_SECONDS_PER_BLOCK'))
         )
 
         punch_task = asyncio.create_task(
-            press_key_in_window(hwnd, keys['space'], PUNCH_SECONDS_PER_BLOCK)
+            press_key_in_window(hwnd, KEYS[os.getenv('PUNCH_KEY')],
+                                os.getenv('PUNCH_SECONDS_PER_BLOCK'))
         )
 
         # Wait for both the moving and punching to stop
@@ -76,6 +64,8 @@ async def do_farming(hwnd):
 
 
 async def main():
+    check_environment_variables()
+
     windows = get_windows()
 
     # Get all windows named something containing 'growtopia'
