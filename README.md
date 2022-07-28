@@ -45,5 +45,5 @@ Create a `.env` file and add the following values (see `example.env` for example
 ## Run
 
 ```
-venv\Scripts\python.exe main.py 
+venv\Scripts\python.exe main.py
 ```
